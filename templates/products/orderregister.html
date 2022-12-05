@@ -1,0 +1,17 @@
+{% extends 'products/base.html' %}
+{% block title %}order register{% endblock %}
+
+{% block main %}
+    <p>price:{{ price }}</p>
+    <div style="height: 25rem">
+        <form method="post">
+            {% csrf_token %}
+            <label>address</label>
+            <input type="text" name="address" style="width: 50rem; height: 10rem">
+            <button type="submit" class="btn btn-success">pay</button><br>
+            {% for m in messages %}
+                {{ m }}
+            {% endfor %}
+        </form>
+    </div>
+{% endblock %}

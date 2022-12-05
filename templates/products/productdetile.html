@@ -1,0 +1,60 @@
+{% extends 'products/base.html' %}
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block main %}
+    <h3>{{ product.title }}</h3><br>
+{#    {% for f in product.file_set.all %}#}
+{#        <img src="/media/{{ f.file }}" width="200", height="280">#}
+{##}
+{#    {% endfor %}<br>#}
+
+
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 300px">
+  <div class="carousel-inner" >
+        <div class="carousel-item active" >
+          <img src="/media/{{product.avatar }}"  alt="..."  class="d-block w-100">
+        </div>
+      {% for f in product.file_set.all %}
+    <div class="carousel-item" >
+      <img src="/media/{{ f.file }}"  alt="..."  class="d-block w-100">
+    </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" >
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: gray"></span>
+    <span class="visually-hidden" >Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: gray"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
+    <p>{{ product.description }}</p><br>
+    <p>{{ product.price }}$</p>
+    {% if product.is_enable %}
+        {% if user.is_authenticated %}
+
+            <form method="post">
+                {% csrf_token %}
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success">add to cart</button>
+                        <input type="text" disabled value="{{ number }}">
+                    </div>
+            </form>
+
+
+        {% else %}
+            <p><a href="/login/">login </a>here to buy </p>
+        {% endif %}
+    {% else %}
+        <p>it's not enable</p>
+    {% endif %}
+{% endblock %}

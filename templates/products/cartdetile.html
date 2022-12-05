@@ -1,0 +1,89 @@
+{% extends 'products/base.html' %}
+{% block title%}cart{% endblock %}
+{% block main %}
+{#    {% for item in cartitem %}#}
+{#        <form method="post" >#}
+{#        {% csrf_token %}#}
+{#            <img style="width: 70px" src="/media/{{ item.product.avatar }}"><p>{{ item.product.title }}</p>#}
+{#            <button class="btn btn-danger" name="{{ item.id }}">delete</button><br>#}
+{#        </form>#}
+{#    {% endfor %}#}
+
+
+
+
+{#<section class="h-100 h-custom" style="background-color: #eee;">#}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+{#              <div class="col-lg-7">#}
+                <h5 class="mb-3"><a href="/products" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <p class="mb-1">Shopping cart</p>
+                  </div>
+
+                </div>
+
+                  {% for item in cartitem %}
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="/media/{{ item.product.avatar }}"
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5>{{ item.product.title }}</h5>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <div style="width: 50px;">
+
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0">{{ item.product.price }}$</h5>
+                        </div>
+                          <form method="post" >
+                              {% csrf_token %}
+                              <button class="btn btn-danger" name="{{ item.id }}">delete</button>
+                          </form>
+
+                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  {% endfor %}
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <a href="/orderregister"  class="btn btn-success">pay</a>
+  </div>
+{#</section>#}
+
+
+{% endblock %}

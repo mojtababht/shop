@@ -1,0 +1,9 @@
+{% extends 'products/base.html' %}
+{% block title %}categories{% endblock %}
+{% block main %}
+        {% for c in categories %}
+
+            <a href="{{ c.title }}" style="text-decoration: none ; color: black ; font-size: large">{{ c.title }}</a><br>
+
+        {% endfor %}
+{% endblock %}

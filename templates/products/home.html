@@ -1,0 +1,29 @@
+{% extends "products/base.html" %}
+{% block title%}home{% endblock %}
+{% block main %}
+
+    <h4>top products</h4>
+    <div class="WrapperTotal">
+        <div class="MyContainer">
+            {% for p in product %}
+                {% if p.is_enable %}
+                    <a href= "/products/{{ p.id }}" class="WrapperItems">
+                        <div class="item">
+                            <div class="ImageStyle">
+                                <img src="/media/{{ p.avatar }}" class="image">
+                            </div>
+                            <div class="wrapperTitle">
+                                <p>{{ p.title }}</p>
+                                <br>
+                                <p>{{ p.price }}$</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+{% endblock %}

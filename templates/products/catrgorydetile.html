@@ -1,0 +1,53 @@
+{% extends "products/base.html" %}
+{% block title %}{{ category }}{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            {% for sub in subcat %}
+                <div class="col">
+                    <h5><a href="/products/categories/{{ sub.title }}" class="subcat">#{{ sub.title }}</a></h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            {% for p in products %}#}
+{#                <div class="wrapperTotal">#}
+{#                    <a href="/products/{{ p.id }}", style="text-decoration: none; color: black">#}
+{#                        <div class="card imgh">#}
+{#                            <img src="/media/{{ p.avatar }}">#}
+{#                            <div class="card-body">#}
+{#                                <h5>{{ p.title }} </h5>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+    <div class="WrapperTotal">
+        <div class="MyContainer">
+            {% for p in products %}
+                {% if p.is_enable %}
+                    <a href= "/products/{{ p.id }}" class="WrapperItems">
+                        <div class="item">
+                            <div class="ImageStyle">
+                                <img src="/media/{{ p.avatar }}" class="image">
+                            </div>
+                            <div class="wrapperTitle">
+                                <p>{{ p.title }}</p>
+                                <br>
+                                <p>{{ p.price }}$</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+{% endblock %}

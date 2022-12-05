@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+{% block title %}search{% endblock %}
+{% block main %}
+    {% for c in Scategories %}
+        <ul>
+            <a href="/products/categories/{{ c.title }}" style="font-size: large; color: black;text-decoration: none">{{ c.title }}</a><br>
+        </ul>
+    {% endfor %}
+
+        <div class="WrapperTotal">
+            <div class="MyContainer">
+                {% for p in Sproduct %}
+                    {% if p.is_enable %}
+                        <a href= "/products/{{ p.id }}" class="WrapperItems">
+                            <div class="item">
+                                <div class="ImageStyle">
+                                    <img src="/media/{{ p.avatar }}" class="image">
+                                </div>
+                                <div class="wrapperTitle">
+                                    <p>{{ p.title }}</p>
+                                    <br>
+                                    <p>{{ p.price }}$</p>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+
+    </div>
+
+{% endblock %}
